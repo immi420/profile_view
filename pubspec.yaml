@@ -1,7 +1,6 @@
 name: profile_view
 description: Open Profile Images in instagram like Styles.
 version: 0.0.1
-author: Imtiaz Ahmad
 homepage: https://github.com/immi420/profile_view
 
 environment:
