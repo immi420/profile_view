@@ -1,3 +1,4 @@
+
 # profile_view
 
 ProfileView is a Flutter package to open profile pictures in instagram style.
@@ -6,20 +7,34 @@ ProfileView is a Flutter package to open profile pictures in instagram style.
 
 ## Getting started
 
-Just Wrap your **CircleAvtar** Widget with **ProfileView**.
+Just Provide Image to your  **ProfileView** and it'll do all the work.
 
 ## Usage
 
-```dart  
-const ProfileView(  
-  child: CircleAvatar(  
-    radius: 100,  
-    backgroundImage: NetworkImage(  
-      "https://img.freepik.com/free-photo/assortment-pieces-cake_114579-28235.jpg",  
-    ),  
-  ),  
-),
-```  
+**Circle Shape Image [Default]**
+
+```dart 
+ProfileView(  
+  image: NetworkImage(  
+      "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+      ),  
+),  
+``` 
+
+**Rectangle Image with Radius**
+
+```dart 
+ProfileView(
+	height: 100,  
+	width: 100,  
+	circle: false, //set value to false
+	borderRadius: 10,  //Corner circular Radius.
+	image: NetworkImage(  
+      "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+      ),  
+),  
+``` 
+
 #### Example Usage
 
 See [Example Code](example/lib/main.dart) for more info.

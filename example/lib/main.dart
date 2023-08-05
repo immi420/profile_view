@@ -67,7 +67,29 @@ class ProfilePage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  const _ProfileInfoRow()
+                  const _ProfileInfoRow(),
+                  const SizedBox(height: 16),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ProfileView(
+                        image: NetworkImage(
+                            "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"),
+                      ),
+                      ProfileView(
+                        image: NetworkImage(
+                            "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"),
+                      ),
+                      ProfileView(
+                        height: 100,
+                        width: 100,
+                        circle: false,
+                        borderRadius: 10,
+                        image: NetworkImage(
+                            "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -171,12 +193,17 @@ class _TopPortion extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
+                // const ProfileView(
+                //   child: CircleAvatar(
+                //     // radius: 10,
+                //     backgroundImage: NetworkImage(
+                //       "https://img.freepik.com/free-photo/assortment-pieces-cake_114579-28235.jpg",
+                //     ),
+                //   ),
+                // ),
                 const ProfileView(
-                  child: CircleAvatar(
-                    // radius: 10,
-                    backgroundImage: NetworkImage(
-                      "https://img.freepik.com/free-photo/assortment-pieces-cake_114579-28235.jpg",
-                    ),
+                  image: NetworkImage(
+                    "https://img.freepik.com/free-photo/assortment-pieces-cake_114579-28235.jpg",
                   ),
                 ),
                 Positioned(
