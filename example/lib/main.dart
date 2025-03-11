@@ -476,7 +476,7 @@ class _ProfileDemoPageState extends State<ProfileDemoPage>
                               ),
                               overlayBackgroundColor: Colors.black54,
                               enableHeroAnimation: true,
-                              heroTag: "gallery-${index}",
+                              heroTag: "gallery-$index",
                             );
                           }),
                         ),
@@ -686,8 +686,8 @@ class _TopPortion extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                ProfileView(
-                  image: const NetworkImage(
+                const ProfileView(
+                  image: NetworkImage(
                     "https://picsum.photos/id/1027/300/300",
                   ),
                   height: 150,

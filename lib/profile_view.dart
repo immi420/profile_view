@@ -1,4 +1,4 @@
-library profile_view;
+library;
 
 import 'dart:ui';
 
@@ -401,7 +401,7 @@ class _ProfileViewState extends State<ProfileView>
     // Get position in screen for animations
     final RenderBox? box =
         _imageKey.currentContext?.findRenderObject() as RenderBox?;
-    final Offset? position = box?.localToGlobal(Offset.zero);
+    box?.localToGlobal(Offset.zero);
 
     if (widget.fullscreenOnEnlarge) {
       await Navigator.of(context).push(
@@ -594,10 +594,12 @@ class _EnlargedImageViewState extends State<_EnlargedImageView>
   @override
   Widget build(BuildContext context) {
     // Use WillPopScope to handle back button press with animation
-    return WillPopScope(
-      onWillPop: () async {
-        _closeWithAnimation();
-        return false; // We handle the navigation ourselves
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, Object? result) {
+        if (!didPop) {
+          _closeWithAnimation();
+        }
       },
       child: AnimatedBuilder(
         animation: _animationController,
@@ -605,7 +607,8 @@ class _EnlargedImageViewState extends State<_EnlargedImageView>
           return Opacity(
             opacity: _animation.value,
             child: Scaffold(
-              backgroundColor: Colors.black.withOpacity(0.9 * _animation.value),
+              backgroundColor:
+                  Colors.black.withValues(alpha: 0.9 * _animation.value),
               extendBodyBehindAppBar: true,
               appBar: widget.showCloseButton
                   ? AppBar(
