@@ -1,44 +1,176 @@
+# ProfileView
 
-# profile_view
+A Flutter package to open profile pictures in Instagram style with advanced customization options.
 
-ProfileView is a Flutter package to open profile pictures in instagram style.
+![Example animation](screenshots/example.gif)
 
-![](screenshots/example.gif)
+## Features
 
-## Getting started
+- **Instagram-style profile viewing** - Tap to enlarge images with smooth animations
+- **Flexible shape options** - Circular or rectangular with customizable border radius
+- **Rich customization** - Borders, overlays, badges, and more
+- **Advanced interactions** - Zoom, hero animations, fullscreen view
+- **Loading states** - Customizable placeholders and error widgets
+- **Performance optimized** - Image preloading and caching
 
-Just Provide Image to your  **ProfileView** and it'll do all the work.
+## Getting Started
+
+Add the package to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  profile_view: ^1.0.0
+```
 
 ## Usage
 
-**Circle Shape Image [Default]**
+### Basic Usage
 
-```dart 
-ProfileView(  
-  image: NetworkImage(  
-      "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
-      ),  
-),  
-``` 
+**Circular Profile Image (Default)**
 
-**Rectangle Image with Radius**
-
-```dart 
+```dart
 ProfileView(
-	height: 100,  
-	width: 100,  
-	circle: false, //set value to false
-	borderRadius: 10,  //Corner circular Radius.
-	image: NetworkImage(  
-      "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
-      ),  
-),  
-``` 
+image: NetworkImage(
+"https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+),
+),
+```
 
-#### Example Usage
+**Rectangular Image with Rounded Corners**
 
-See [Example Code](example/lib/main.dart) for more info.
+```dart
+ProfileView(
+height: 100,
+width: 100,
+isCircular: false, // Set to false for rectangular shape
+borderRadius: 10,  // Corner radius for rectangle
+image: NetworkImage(
+"https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+),
+),
+```
 
-### Contributing
+### Advanced Features
 
-Every pull request is welcome.
+**With Custom Border**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+borderWidth: 2.0,
+borderColor: Colors.blue,
+),
+```
+
+**With Status Badge**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+showBadge: true,
+badgeColor: Colors.green, // Online status
+badgeAlignment: Alignment.bottomRight,
+),
+```
+
+**With Text Overlay**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+overlayText: 'John Smith',
+overlayTextStyle: TextStyle(fontWeight: FontWeight.bold),
+overlayBackgroundColor: Colors.black54,
+overlayAlignment: Alignment.bottomCenter,
+),
+```
+
+**With Zoom Capability**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+enableZoom: true,
+enableDoubleTapZoom: true,
+),
+```
+
+**With Hero Animation**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+enableHeroAnimation: true,
+heroTag: 'profile-hero-1',
+),
+```
+
+**Fullscreen View on Enlarge**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+fullscreenOnEnlarge: true,
+showCloseButton: true,
+),
+```
+
+**Custom Loading and Error States**
+
+```dart
+ProfileView(
+image: NetworkImage('https://example.com/profile.jpg'),
+placeholder: CircularProgressIndicator(),
+errorWidget: Icon(Icons.error),
+loadingIndicatorColor: Colors.purple,
+),
+```
+
+## Complete Parameter List
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `image` | `ImageProvider<Object>?` | `null` | The image to display |
+| `height` | `double` | `50.0` | Height of the profile view |
+| `width` | `double` | `50.0` | Width of the profile view |
+| `isCircular` | `bool` | `true` | Whether the profile should be circular |
+| `borderRadius` | `double` | `0.0` | Border radius for non-circular views |
+| `dialogBackgroundColor` | `Color` | `Colors.transparent` | Background color for enlarged dialog |
+| `blurIntensity` | `double` | `6.0` | Blur intensity for background when enlarged |
+| `enlargedSizeFactor` | `double` | `0.8` | Size factor for enlarged image relative to screen |
+| `borderWidth` | `double` | `0.0` | Border width for profile image |
+| `borderColor` | `Color` | `Colors.transparent` | Border color for profile image |
+| `placeholder` | `Widget?` | `null` | Widget to show while loading |
+| `errorWidget` | `Widget?` | `null` | Widget to show on error |
+| `overlayText` | `String?` | `null` | Text to display as overlay |
+| `overlayTextStyle` | `TextStyle?` | `null` | Style for overlay text |
+| `overlayBackgroundColor` | `Color` | `Colors.black54` | Background color for overlay |
+| `overlayWidget` | `Widget?` | `null` | Custom widget to overlay |
+| `overlayAlignment` | `Alignment` | `Alignment.bottomCenter` | Position of overlay |
+| `enableZoom` | `bool` | `false` | Enable zoom in enlarged view |
+| `enableDoubleTapZoom` | `bool` | `false` | Enable double-tap to zoom |
+| `fullscreenOnEnlarge` | `bool` | `false` | Show enlarged view fullscreen |
+| `fadeInDuration` | `Duration` | `300ms` | Duration for fade-in animation |
+| `dialogAnimationDuration` | `Duration` | `300ms` | Duration for dialog animations |
+| `onTap` | `VoidCallback?` | `null` | Callback when profile is tapped |
+| `onLongPress` | `VoidCallback?` | `null` | Callback when profile is long-pressed |
+| `cacheImage` | `bool` | `true` | Whether to cache the image |
+| `enableHeroAnimation` | `bool` | `false` | Enable hero animations between views |
+| `heroTag` | `String?` | `null` | Hero tag for animation (required if enableHeroAnimation is true) |
+| `loadingIndicatorColor` | `Color` | `Colors.blue` | Color for loading indicator |
+| `animationCurve` | `Curve` | `Curves.easeInOut` | Animation curve for transitions |
+| `showBadge` | `bool` | `false` | Show badge indicator |
+| `badgeColor` | `Color` | `Colors.green` | Badge color |
+| `badgeSize` | `double` | `12.0` | Badge size |
+| `badgeAlignment` | `Alignment` | `Alignment.bottomRight` | Badge position |
+| `badgeBorderColor` | `Color` | `Colors.white` | Badge border color |
+| `badgeBorderWidth` | `double` | `2.0` | Badge border width |
+| `showCloseButton` | `bool` | `true` | Whether to show close button in fullscreen view |
+
+## Example
+
+See [Example App](example/lib/main.dart) for more detailed usage.
+
+## License
+
+This package is licensed under the MIT License.
